@@ -78,7 +78,7 @@ using namespace std;
 	bool trie::IsflagOrHasSon(TrieNode* ptr)
 	{
 		if (ptr->EndOfWord)
-			return true;
+			return true; 
 		for (size_t i = 0; i < 26; i++)
 		{
 			if (ptr->Children[i])//cheacking if the end of the word has a son
