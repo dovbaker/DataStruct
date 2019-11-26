@@ -9,9 +9,9 @@ private:
 public:
 	TrieNode* getRoot() { return root; }
 	void insert(string word,TrieNode *);
-	void del(string word, TrieNode* ptr);
+	bool del(string word, TrieNode* ptr);
 	TrieNode* search(string word, TrieNode*);
-	bool IsflagOrHasSon(TrieNode* ptr);
+	bool HasflagOrSon(TrieNode* ptr);
 	trie();
 	~trie()
 	{

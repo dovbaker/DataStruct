@@ -18,10 +18,12 @@ class TrieNode
 		{
 			if (!Children[i])
 			{
-				delete Children[i]->Children;//activate dsctr in all children
+				delete Children[i];
+				Children[i] = nullptr;//activate dsctr in all children
 			}
 		}
 		delete Children;
+		Children = nullptr;
 	}
 	
 };

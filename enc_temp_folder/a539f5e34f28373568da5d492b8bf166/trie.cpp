@@ -18,7 +18,7 @@ using namespace std;
 		{
 			if (!ptr->Children[word[i] - 97])
 			{
-				
+				int num = word[i] - 97;
 				ptr->Children[word[i] - 97] = new TrieNode();
 				ptr->Children[word[i] - 97]->parent = ptr;
 			}
