@@ -3,10 +3,6 @@
 #include <algorithm>
 #include <cctype>
 
-
-
-
-
 using namespace std;
 
 	void trie::insert(string word,TrieNode* ptr)
@@ -37,7 +33,7 @@ using namespace std;
 
 		//a pointer to the last letter
 		TrieNode* LastLetter = search(word, ptr);
-		
+
 
 		//if the word dos not exsist
 		if (!search(word, ptr))
@@ -54,40 +50,19 @@ using namespace std;
 		}
 
 		//deletes the word from bottom up each ,itration we cheak if the parent has a son or a flag
-		TrieNode* temp = nullptr;
-		TrieNode * ptr1 = LastLetter;
-		for (size_t i = 0; i < word.length(); i++)
+		int counter = 0;
+		TrieNode* current = LastLetter;
+		while (!HasflagOrSon(current->parent) && current->parent != root)
 		{
-			if (HasflagOrSon(ptr1->parent))
-			{
-				
-				delete ptr1->parent->Children[word[i] - 97];
-		
-				ptr1->parent->Children[word[i] - 97] = nullptr;
-				delete ptr1;
-				return true;
-			}
-			else
-				temp = ptr1;
-			if (i < word.length() - 1)
-			{
-				ptr1 = ptr1->parent;
-				delete temp;
-			}
-			else
-			{
-				
-					delete ptr1->parent->Children[word[0] - 97];
-					ptr1->parent->Children[word[0] - 97] = nullptr;
-				
-
-			}
+			counter++;
+			current = current->parent;
 		}
+		current->parent->Children[word[counter]-'a'] = nullptr;
+		delete current;
 
 	}
+		
 
-	
-	
 	
 	TrieNode* trie::search(string word, TrieNode* ptr)
 	{

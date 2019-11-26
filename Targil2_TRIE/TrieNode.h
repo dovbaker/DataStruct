@@ -7,7 +7,7 @@ class TrieNode
 	
 	bool EndOfWord = false;
 	TrieNode* parent=nullptr;
-	TrieNode ** Children = new  TrieNode * [26];//each index is referd to a letter
+	TrieNode * Children [26];//each index is referd to a letter
 	TrieNode();
 		
 
@@ -22,8 +22,6 @@ class TrieNode
 				Children[i] = nullptr;//activate dsctr in all children
 			}
 		}
-		delete Children;
-		Children = nullptr;
 	}
 	
 };
