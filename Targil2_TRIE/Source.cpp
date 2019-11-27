@@ -1,3 +1,5 @@
+//dov baker 203301072
+//david bretler 206301384
 #include <iostream>
 #include <list>
 #include <string>
@@ -6,13 +8,13 @@
 using namespace std;
 
 
-void main()
+int main()
 {
 
 	char ch;
 	string wrd;
 	trie tr;
-	int comp;
+	
 
 	cout << "\nTRIE PROGRAM" << endl;
 	cout << "\nChoose one of the following" << endl;
@@ -49,14 +51,16 @@ void main()
 		case '4':
 			cout << "Enter a prefix to complete " << endl;
 			cin >> wrd;
-			comp = 0;// tr.printAutoSuggestions(wrd);
+			
+			 tr.printAutoSuggestions1(wrd);
 
-			if (comp == 0)
-				cout << "No string exist with this prefix\n";
+			
+				
 			break;
 		case '5':cout << "bye " << endl; break;
 		default: cout << "ERROR " << endl;  break;
 		}//switch
 	} while (ch != '5');
 
+	return 0;
 }

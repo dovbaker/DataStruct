@@ -12,6 +12,9 @@ public:
 	bool del(string word, TrieNode* ptr);
 	TrieNode* search(string word, TrieNode*);
 	bool HasflagOrSon(TrieNode* ptr);
+	void printAutoSuggestions1(string PartOfWord);
+	TrieNode* printAutoSuggestions2(string PartOfWord);
+	void printAutoSuggestions3(TrieNode* ptr);
 	trie();
 	~trie()
 	{
