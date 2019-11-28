@@ -1,4 +1,6 @@
 #pragma once
+#include <cstddef>
+
 #include "TrieNode.h"
 #include <string>
 using namespace std;
@@ -14,7 +16,7 @@ public:
 	bool HasflagOrSon(TrieNode* ptr);
 	void printAutoSuggestions1(string PartOfWord);
 	TrieNode* printAutoSuggestions2(string PartOfWord);
-	void printAutoSuggestions3(TrieNode* ptr);
+	void printAutoSuggestions3(TrieNode* ptr, char str[], int level,string PartOfword);
 	trie();
 	~trie()
 	{
