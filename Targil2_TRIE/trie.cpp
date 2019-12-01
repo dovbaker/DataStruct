@@ -29,15 +29,13 @@ using namespace std;
 
 	bool trie::del(string word, TrieNode* ptr)
 	{
-	//	transform(word.begin(), word.end(), word.begin(),//converts to lower case
-	//		[](unsigned char c) { return std::tolower(c); });
-
+	
 		//a pointer to the last letter
 		TrieNode* LastLetter = search(word, ptr);
 
 
 		//if the word dos not exsist
-		if (!search(word, ptr))
+		if (!LastLetter)
 			return false;
 
 		//if the word is a prefix of a other word delete only the flag
@@ -51,11 +49,11 @@ using namespace std;
 		}
 
 		//deletes the word from bottom up each ,itration we cheak if the parent has a son or a flag
-		int counter = 0;
+		int counter = word.length()-1;
 		TrieNode* current = LastLetter;
 		while (!HasflagOrSon(current->parent) && current->parent != root)
 		{
-			counter++;
+			counter--;
 			current = current->parent;
 		}
 		current->parent->Children[word[counter]-'a'] = NULL;
@@ -67,9 +65,7 @@ using namespace std;
 	
 	TrieNode* trie::search(string word, TrieNode* ptr)
 	{
-		//transform(word.begin(), word.end(), word.begin(),//converts to lower case
-		//	[](unsigned char c) { return std::tolower(c); });
-
+		
 		for (int i = 0; i < word.length(); i++)//scan the tree 
 		{
 			if ((ptr->Children[word[i] - 97]))//if the leaf represnting the letter is not NULL 
@@ -158,7 +154,7 @@ using namespace std;
 	 //prints the words on the 
 	 void trie::printAutoSuggestions3(TrieNode* ptr, char str[], int level,string PartOfword)
 	 {
-
+		
 		
 			 // If node is leaf node, it means end of string, so a null  is added and string is printed	 
 		 if (isLeafNode(ptr))
@@ -170,13 +166,15 @@ using namespace std;
 			 
 			 for (int i = 0; i < 26; i++)
 			 {
-				 // if  child is found 
-				 // add parent key to str and 
-				 // call the print function recursively 
-				 // for child node 
+				 // if  child is found  add parent key to str and 
+				 // call the print function recursively  for child node 
 				 if (ptr->Children[i])
 				 {
 					 str[level] = i + 'a';
+
+					 /*if (ptr->Children[i]->EndOfWord&& isLeafNode(ptr->Children[i]))
+						 cout << PartOfword << str << endl;*/
+
 					 printAutoSuggestions3(ptr->Children[i], str, level + 1, PartOfword);
 				 }
 			 }
